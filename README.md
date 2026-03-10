@@ -277,7 +277,7 @@ Overall, the findings suggest that **patient diagnosis and hospitalization durat
 
 ---
 
-# Next Steps
+# Business Recommendations
 
 Based on the findings of the exploratory data analysis, several strategic recommendations can be considered for healthcare organizations seeking to improve operational efficiency and cost management.
 
