@@ -33,6 +33,8 @@ Understanding these relationships can help healthcare administrators:
 
 The dataset used in this project is a **synthetically generated healthcare dataset** designed to simulate hospital admission and billing records.
 
+Source: https://www.kaggle.com/datasets/prasad22/healthcare-dataset
+
 ### Dataset Overview
 
 * Initial records: **55,500**
