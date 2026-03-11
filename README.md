@@ -205,6 +205,8 @@ Even though the dataset is synthetic, analyzing admission types helps illustrate
 
 ## Average Length of Stay by Medical Condition
 
+![Admission Distribution](visuals/average_length_of_stay_by_medical_condition.png)
+
 Hospitalization duration was evaluated by calculating the **average length of stay for each medical condition**.
 
 ### Insight
@@ -216,6 +218,8 @@ Examining differences in hospital stay duration helps healthcare organizations u
 ---
 
 ## Average Treatment Cost by Medical Condition
+
+![Admission Distribution](visuals/average_treatment_cost_by_medical_condition.png)
 
 Treatment costs were explored by calculating the **average adjusted billing amount** for each medical condition.
 
@@ -231,6 +235,8 @@ Analyzing cost patterns by condition helps healthcare organizations better under
 
 ## Relationship Between Length of Stay and Treatment Cost
 
+![Admission Distribution](visuals/length_of_stay_vs_average_treatment_cost.png)
+
 To explore the relationship between hospital stay duration and treatment cost, the **average adjusted billing amount was calculated for each length-of-stay value**.
 
 ### Insight
@@ -242,6 +248,8 @@ This relationship highlights how hospital utilization can influence overall heal
 ---
 
 ## Total Billing by Insurance Provider
+
+![Admission Distribution](visuals/total_billing_by_insurance_provider.png)
 
 Billing amounts were aggregated by **insurance provider** to examine how hospital revenue is distributed across insurers.
 
