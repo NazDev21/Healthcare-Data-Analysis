@@ -263,6 +263,8 @@ In real-world healthcare settings, this type of analysis can help hospitals unde
 
 # Dashboard
 
+![Admission Distribution](visuals/healthcare_dashboard.png)
+
 An interactive dashboard was developed in Microsoft Excel to visually summarize key insights from the healthcare dataset and allow users to explore relationships between hospital admissions, treatment costs, and hospitalization duration. The dashboard consolidates multiple analytical views into a single interface, enabling users to quickly identify patterns and trends within the dataset.
 
 The dashboard was built using **PivotTables, PivotCharts, slicers, and interactive filters**, allowing dynamic exploration of the data without modifying the underlying dataset.
