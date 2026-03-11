@@ -183,6 +183,8 @@ Because the dataset is **synthetically generated**, the analysis primarily demon
 
 ## Admission Distribution by Admission Type
 
+![Admission Distribution](visuals/admission_distribution_by_admission_type.png)
+
 To understand how patients enter the hospital system, the distribution of admissions across **admission types** was analyzed.
 
 The dataset includes three admission categories:
