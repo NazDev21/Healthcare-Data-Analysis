@@ -10,6 +10,12 @@ The project demonstrates a complete data analytics workflow including **data cle
 
 ---
 
+## Project Workflow
+
+Dataset → Data Cleaning → Exploratory Analysis → SQL Analysis → Dashboard → Business Recommendations
+
+---
+
 # Business Question
 
 **How do patient characteristics and admission factors influence hospital length of stay and treatment costs?**
@@ -306,6 +312,18 @@ The dashboard includes slicers that allow filtering by:
 * Test Results
 
 When filters are applied, all dashboard visualizations update simultaneously, enabling users to explore relationships between hospitalization duration, treatment costs, and patient characteristics.
+
+---
+
+## Key Insights
+
+• Longer hospital stays are associated with higher treatment costs.
+
+• Certain medical conditions tend to require longer hospitalization periods.
+
+• Treatment costs vary significantly across medical conditions.
+
+• Billing revenue is distributed across multiple insurance providers.
 
 ---
 
