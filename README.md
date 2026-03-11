@@ -251,6 +251,76 @@ In real-world healthcare settings, this type of analysis can help hospitals unde
 
 ---
 
+# Dashboard
+
+An interactive dashboard was developed in Microsoft Excel to visually summarize key insights from the healthcare dataset and allow users to explore relationships between hospital admissions, treatment costs, and hospitalization duration. The dashboard consolidates multiple analytical views into a single interface, enabling users to quickly identify patterns and trends within the dataset.
+
+The dashboard was built using **PivotTables, PivotCharts, slicers, and interactive filters**, allowing dynamic exploration of the data without modifying the underlying dataset.
+
+---
+
+## Dashboard Components
+
+The dashboard includes five primary visualizations that address the project’s business question regarding the factors that influence hospital length of stay and treatment costs.
+
+### Admission Distribution by Admission Type
+
+This chart displays the number of hospital admissions categorized by **admission type**, including emergency, elective, and urgent admissions. The visualization provides an overview of how patients enter the hospital system and helps illustrate the distribution of patient intake across different admission categories.
+
+---
+
+### Average Length of Stay by Medical Condition
+
+This chart shows the **average length of hospital stay for each medical condition**. By comparing hospitalization duration across conditions, the chart highlights which diagnoses tend to require longer treatment periods and greater hospital resource utilization.
+
+---
+
+### Average Treatment Cost by Medical Condition
+
+This visualization presents the **average adjusted billing amount for each medical condition**. The chart allows users to identify conditions that are associated with higher treatment costs and compare cost patterns across different diagnoses.
+
+The **Adjusted Billing Amount** variable is used to ensure that billing adjustments or refunds do not distort cost comparisons.
+
+---
+
+### Length of Stay vs. Treatment Cost
+
+A scatter plot was created to examine the relationship between **hospital length of stay and treatment cost**. The chart plots the average adjusted billing amount for each length-of-stay value, allowing users to observe how treatment costs change as hospitalization duration increases.
+
+This visualization helps illustrate the positive relationship between **longer hospital stays and higher treatment costs**.
+
+---
+
+### Total Billing by Insurance Provider
+
+This chart aggregates the **total adjusted billing amount by insurance provider**, providing insight into how hospital revenue is distributed across different insurers. The visualization helps demonstrate how healthcare organizations may analyze revenue streams across payer groups.
+
+---
+
+## Interactive Dashboard Features
+
+To enhance usability, the dashboard includes **interactive slicers and filters** that allow users to dynamically explore the data.
+
+Users can filter the dashboard by several variables, including:
+
+* Admission Type
+* Medical Condition
+* Insurance Provider
+* Gender
+* Test Results
+
+When a slicer filter is applied, all dashboard visualizations update simultaneously, allowing users to analyze how different patient groups impact hospitalization duration, treatment costs, and billing patterns.
+
+---
+
+## Purpose of the Dashboard
+
+The dashboard provides a centralized view of key metrics related to hospital utilization and treatment costs. By integrating multiple visualizations into a single interface, the dashboard allows healthcare administrators and analysts to quickly identify patterns in admissions, evaluate cost drivers, and explore relationships between patient characteristics and healthcare expenditures.
+
+This interactive approach supports **data-driven decision-making** by making complex healthcare data more accessible and easier to interpret.
+
+---
+
 ## Summary of Key Findings
 
 The exploratory analysis revealed several patterns within the dataset:
