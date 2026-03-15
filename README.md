@@ -22,10 +22,10 @@ This project demonstrates how these types of metrics can be analyzed using **SQL
 
 Insights and recommendations are provided across the following key areas:
 
-- **Category 1: Admission Distribution and Patient Intake Patterns**
-- **Category 2: Hospital Length of Stay Analysis**
-- **Category 3: Treatment Cost Drivers by Medical Condition**
-- **Category 4: Insurance Billing and Revenue Distribution**
+- **Admission Distribution and Patient Intake Patterns**
+- **Hospital Length of Stay Analysis**
+- **Treatment Cost Drivers by Medical Condition**
+- **Insurance Billing and Revenue Distribution**
 
 ---
 
@@ -109,29 +109,29 @@ For healthcare leadership, these findings highlight the importance of monitoring
 
 # Insights Deep Dive
 
-## Category 1: Admission Distribution and Patient Intake Patterns
+## Admission Distribution and Patient Intake Patterns
 
-• **Main insight 1:** Admissions are distributed across emergency, elective, and urgent categories, demonstrating how hospitals classify patient intake based on treatment urgency.
+• Admissions are distributed across emergency, elective, and urgent categories, demonstrating how hospitals classify patient intake based on treatment urgency.
 
-• **Main insight 2:** Emergency admissions represent a critical operational area that requires immediate resource allocation and medical attention.
+• Emergency admissions represent a critical operational area that requires immediate resource allocation and medical attention.
 
-• **Main insight 3:** Elective admissions typically represent scheduled procedures, allowing hospitals to better plan staff and facility utilization.
+• Elective admissions typically represent scheduled procedures, allowing hospitals to better plan staff and facility utilization.
 
-• **Main insight 4:** Understanding admission patterns helps hospital administrators monitor patient flow and operational demand.
+• Understanding admission patterns helps hospital administrators monitor patient flow and operational demand.
 
 ![Admission Distribution](visuals/admission_distribution_by_admission_type.png)
 
 ---
 
-## Category 2: Hospital Length of Stay Analysis
+## Hospital Length of Stay Analysis
 
-• **Main insight 1:** Average hospital stay duration varies by medical condition, suggesting differences in treatment intensity and recovery time.
+• Average hospital stay duration varies by medical condition, suggesting differences in treatment intensity and recovery time.
 
-• **Main insight 2:** Some conditions require longer hospitalization due to more complex treatment protocols or extended monitoring.
+• Some conditions require longer hospitalization due to more complex treatment protocols or extended monitoring.
 
-• **Main insight 3:** Longer hospital stays increase resource utilization, including bed occupancy and staffing requirements.
+• Longer hospital stays increase resource utilization, including bed occupancy and staffing requirements.
 
-• **Main insight 4:** Monitoring length of stay helps hospitals identify opportunities to improve operational efficiency and patient throughput.
+• Monitoring length of stay helps hospitals identify opportunities to improve operational efficiency and patient throughput.
 
 ![Admission Distribution](visuals/average_length_of_stay_by_medical_condition.png)
 
@@ -139,29 +139,29 @@ For healthcare leadership, these findings highlight the importance of monitoring
 
 ---
 
-## Category 3: Treatment Cost Drivers by Medical Condition
+## Treatment Cost Drivers by Medical Condition
 
-• **Main insight 1:** Average treatment costs differ across medical conditions, reflecting variations in diagnostic testing, medication, and procedures.
+• Average treatment costs differ across medical conditions, reflecting variations in diagnostic testing, medication, and procedures.
 
-• **Main insight 2:** Conditions requiring specialized treatment tend to produce higher billing amounts.
+• Conditions requiring specialized treatment tend to produce higher billing amounts.
 
-• **Main insight 3:** Treatment cost analysis helps identify conditions contributing most to hospital expenditures.
+• Treatment cost analysis helps identify conditions contributing most to hospital expenditures.
 
-• **Main insight 4:** Understanding cost drivers supports financial planning and cost management strategies.
+• Understanding cost drivers supports financial planning and cost management strategies.
 
 ![Admission Distribution](visuals/average_treatment_cost_by_medical_condition.png)
 
 ---
 
-## Category 4: Insurance Billing and Revenue Distribution
+## Insurance Billing and Revenue Distribution
 
-• **Main insight 1:** Billing totals are distributed across multiple insurance providers.
+• Billing totals are distributed across multiple insurance providers.
 
-• **Main insight 2:** Insurance reimbursements represent a significant source of hospital revenue.
+• Insurance reimbursements represent a significant source of hospital revenue.
 
-• **Main insight 3:** Monitoring payer mix helps healthcare organizations understand financial risk and revenue concentration.
+• Monitoring payer mix helps healthcare organizations understand financial risk and revenue concentration.
 
-• **Main insight 4:** Billing analysis can support strategic planning and negotiations with insurance providers.
+• Billing analysis can support strategic planning and negotiations with insurance providers.
 
 ![Admission Distribution](visuals/total_billing_by_insurance_provider.png)
 
