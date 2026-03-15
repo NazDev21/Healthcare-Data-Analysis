@@ -1,360 +1,191 @@
-# Healthcare Analytics Project
+# Healthcare Data Analytics Project
 
-## Project Overview
+## Project Background
 
-Healthcare organizations must balance patient care, operational efficiency, and financial performance. Understanding how patient characteristics and admission factors influence hospital utilization and treatment costs can help healthcare providers make more informed operational and financial decisions.
+This project analyzes a **synthetic healthcare dataset** to simulate how a healthcare organization might evaluate hospital admissions, patient length of stay, treatment costs, and insurance billing patterns.
 
-This project analyzes a healthcare dataset to explore patterns in **hospital admissions, length of stay, treatment costs, and insurance billing**. Using Excel and SQL, the analysis identifies relationships between patient characteristics, hospitalization duration, and treatment expenses.
+The objective of the analysis is to identify patterns in **hospital utilization, treatment costs, and patient admission characteristics** that could help healthcare administrators improve operational efficiency and financial decision-making.
 
-The project demonstrates a complete data analytics workflow including **data cleaning, exploratory data analysis (EDA), SQL analysis, and dashboard development**. The final result is an interactive Excel dashboard that allows users to explore key healthcare metrics and trends.
+While the dataset is **synthetically generated**, the analytical workflow mirrors the type of analysis commonly performed by healthcare data analysts working within hospital systems. The analysis focuses on understanding how patient admissions, medical conditions, and hospitalization duration influence treatment costs and hospital resource utilization.
 
----
+Healthcare organizations typically monitor several operational and financial metrics when evaluating performance, including:
 
-## Project Workflow
+* Hospital admission volume
+* Average patient length of stay
+* Treatment costs by medical condition
+* Insurance billing and revenue distribution
+* Hospital resource utilization and patient throughput
 
-Dataset → Data Cleaning → Exploratory Analysis → SQL Analysis → Dashboard → Business Recommendations
+This project demonstrates how these types of metrics can be analyzed using **SQL, Excel, and data visualization techniques** to support data-driven decision making.
 
----
+### Key Analysis Areas
 
-# Business Question
+Insights and recommendations are provided across the following key areas:
 
-**How do patient characteristics and admission factors influence hospital length of stay and treatment costs?**
-
-Understanding these relationships can help healthcare administrators:
-
-* Identify factors associated with longer hospital stays
-* Understand drivers of treatment costs
-* Evaluate hospital resource utilization
-* Support data-driven decision making in healthcare operations
-
----
-
-# Dataset
-
-The dataset used in this project is a **synthetically generated healthcare dataset** designed to simulate hospital admission and billing records.
-
-Source: https://www.kaggle.com/datasets/prasad22/healthcare-dataset
-
-### Dataset Overview
-
-* Initial records: **55,500**
-* Final cleaned records: **50,000**
-* Number of variables: **18**
-
-### Key Variables
-
-| Variable                | Description                                                                      |
-| ----------------------- | -------------------------------------------------------------------------------- |
-| name                    | Patient name                                                                     |
-| age                     | Patient age                                                                      |
-| gender                  | Patient gender                                                                   |
-| blood_type              | Blood type classification                                                        |
-| medical_condition       | Diagnosed medical condition                                                      |
-| admission_type          | Admission category (Emergency, Elective, Urgent)                                 |
-| hospital                | Hospital where treatment occurred                                                |
-| doctor                  | Treating physician                                                               |
-| admission_date          | Date of hospital admission                                                       |
-| discharge_date          | Date of discharge                                                                |
-| length_of_stay          | Calculated hospitalization duration                                              |
-| billing_amount          | Original billing amount                                                          |
-| adjustment_flag         | Indicates whether the billing record represents a charge or a billing adjustment |
-| adjusted_billing_amount | Billing value excluding negative adjustments for cost analysis                   |
-| insurance_provider      | Insurance company responsible for billing                                        |
-| medication              | Medication prescribed                                                            |
-| test_results            | Diagnostic test results                                                          |
-| room_number             | Assigned hospital room                                                           |
-
-Because the dataset is synthetic, it is used primarily to demonstrate **data analysis techniques rather than real-world healthcare trends**.
+- **Category 1: Admission Distribution and Patient Intake Patterns**
+- **Category 2: Hospital Length of Stay Analysis**
+- **Category 3: Treatment Cost Drivers by Medical Condition**
+- **Category 4: Insurance Billing and Revenue Distribution**
 
 ---
 
-# Data Cleaning
+### Supporting Resources
 
-Before performing analysis, the dataset was inspected and prepared to ensure data quality and consistency.
+Targeted SQL queries regarding business questions can be found here:
+**[SQL Analysis Queries](code/healthcare_eda.sql)**
 
-### Duplicate Records
+The raw and clean healthcare datasets can be found here:
+**[Healthcare Datasets](data/)**
 
-The dataset initially contained **55,500 records**.
+An interactive Excel dashboard used to explore trends and insights can be found here:
+**[Excel Dashboard](dashboard/)**
 
-First, exact duplicate rows were removed using Excel’s **Remove Duplicates** function across all columns.
-
-* **534 exact duplicate records** were removed.
-
-Further inspection revealed an additional duplication pattern where records were identical across all columns **except the age column**. To resolve this issue, duplicates were removed again while **excluding the age column from the comparison criteria**.
-
-After completing this process, the dataset was reduced to:
-
-**50,000 cleaned records**
-
----
-
-### Missing Values
-
-The dataset was checked for missing values using Excel’s **Go To Special → Blanks** feature.
-
-Result:
-
-* No missing values were detected across any variables.
-
----
-
-### Text Standardization
-
-The **name** column contained inconsistent capitalization formats. The following Excel functions were applied to standardize formatting and remove extra spaces:
-
-```
-PROPER(TRIM(name))
-```
-
-This ensured consistent capitalization and removed potential leading or trailing whitespace.
-
----
-
-### Date Validation
-
-The dataset includes two date fields:
-
-* admission_date
-* discharge_date
-
-A validation check confirmed that **discharge dates were never earlier than admission dates**, ensuring that hospitalization durations were logically consistent.
-
----
-
-### Billing Amount Adjustments
-
-Some records contained **negative billing values**, which may represent billing adjustments or refunds.
-
-To preserve transparency while supporting cost analysis:
-
-* The original **billing_amount** column was retained.
-* A new column **adjustment_flag** was created to identify whether the record represents a billing charge or adjustment.
-* A new column **adjusted_billing_amount** was created to keep only positive billing values for financial analysis.
-
-This approach allows accurate cost analysis while maintaining the integrity of the original billing data.
-
----
-
-### Derived Variable: Length of Stay
-
-A new column called **length_of_stay** was created to calculate hospitalization duration.
-
-Formula used:
-
-```
-Length of Stay = discharge_date − admission_date
-```
-
-This variable enables analysis of hospital utilization and patient stay patterns.
-
----
-
-# Exploratory Data Analysis
-
-Exploratory analysis was conducted to identify patterns in hospital admissions, treatment costs, and hospitalization duration.
-
-### Admission Distribution by Admission Type
-
-![Admission Distribution](visuals/admission_distribution_by_admission_type.png)
-
-Admissions were analyzed across the following categories:
-
-* Emergency
-* Elective
-* Urgent
-
-The dataset shows a relatively balanced distribution across admission types. This pattern is expected because the dataset is synthetic and designed to provide equal representation across categories.
-
----
-
-### Average Length of Stay by Medical Condition
-
-![Admission Distribution](visuals/average_length_of_stay_by_medical_condition.png)
-
-The average **length of stay** was calculated for each medical condition.
-
-This analysis highlights how different diagnoses can influence hospitalization duration. Some conditions are associated with longer hospital stays, indicating potentially higher treatment complexity or longer recovery periods.
-
----
-
-### Average Treatment Cost by Medical Condition
-
-![Admission Distribution](visuals/average_treatment_cost_by_medical_condition.png)
-
-Average treatment costs were analyzed using the **adjusted_billing_amount** variable.
-
-Results show variation in treatment costs across medical conditions. Differences may reflect variations in treatment procedures, diagnostic testing, or care requirements.
-
----
-
-### Relationship Between Length of Stay and Treatment Cost
-
-![Admission Distribution](visuals/length_of_stay_vs_average_treatment_cost.png)
-
-The relationship between hospitalization duration and treatment cost was explored by analyzing the **average adjusted billing amount for each length of stay**.
-
-The analysis suggests a **positive relationship between hospital stay duration and treatment cost**. Longer hospital stays generally correspond with higher treatment expenses due to additional services and extended care.
-
----
-
-### Total Billing by Insurance Provider
-
-![Admission Distribution](visuals/total_billing_by_insurance_provider.png)
-
-Billing totals were aggregated by **insurance provider** to examine revenue distribution across insurers.
-
-Because the dataset is synthetic, billing totals appear relatively balanced across providers. However, this analysis demonstrates how hospitals can evaluate revenue sources across payer groups.
-
----
-
-# SQL Analysis
-
-SQL was used to perform additional analysis and generate summary statistics supporting the project’s business question.
-
-### Average Length of Stay by Medical Condition
-
-This query calculates the **average length of stay for each medical condition**, helping identify which conditions tend to require longer hospitalizations.
-
-```sql
-SELECT medical_condition, ROUND(AVG(length_of_stay), 2) AS average_stay
-FROM healthcare_dataset_final
-GROUP BY medical_condition
-ORDER BY average_stay DESC;
-```
-
----
-
-### Total Revenue by Insurance Provider
-
-This query calculates the **total adjusted billing amount by insurance provider**, showing which insurers generate the largest billing totals.
-
-```sql
-SELECT insurance_provider, ROUND(SUM(adjusted_billing_amount), 2) AS insurance_revenue
-FROM healthcare_dataset_final
-GROUP BY insurance_provider
-ORDER BY insurance_revenue DESC;
-```
-
----
-
-### Admission Distribution by Admission Type
-
-This query summarizes the **number and percentage of admissions by admission type**, helping show how patients enter the hospital system.
-
-```sql
-SELECT
-    admission_type,
-    number_of_admissions,
-    ROUND((number_of_admissions * 100.0 / SUM(number_of_admissions) OVER()), 2) AS percentage_of_admissions
-FROM (
-    SELECT
-        admission_type,
-        COUNT(name) AS number_of_admissions
-    FROM healthcare_dataset_final
-    GROUP BY admission_type
-) AS admission_table
-ORDER BY number_of_admissions DESC;
-```
-
----
-
-### Average Billing Amount by Medical Condition
-
-This query calculates the **average adjusted billing amount for each medical condition**, helping identify which conditions are most expensive to treat.
-
-```sql
-SELECT medical_condition, ROUND(AVG(adjusted_billing_amount), 2) AS average_billing_amount
-FROM healthcare_dataset_final
-GROUP BY medical_condition
-ORDER BY average_billing_amount DESC;
-```
-
----
-
-### Length of Stay vs Billing Amount
-
-This query analyzes the relationship between **hospitalization duration and treatment cost** by calculating the admission count and average billing amount for each length-of-stay value.
-
-```sql
-SELECT
-    length_of_stay,
-    COUNT(*) AS admission_count,
-    ROUND(AVG(adjusted_billing_amount), 2) AS avg_billing_amount
-FROM healthcare_dataset_final
-GROUP BY length_of_stay
-ORDER BY length_of_stay ASC;
-```
-
----
-
-# Dashboard
+### Dashboard Preview
 
 ![Admission Distribution](visuals/healthcare_dashboard.png)
 
-An interactive Excel dashboard was developed to visually summarize key insights from the dataset.
+---
 
-The dashboard includes the following visualizations:
+# Data Structure & Initial Checks
 
-* Admission Distribution by Admission Type
-* Average Length of Stay by Medical Condition
-* Average Treatment Cost by Medical Condition
-* Length of Stay vs Treatment Cost
-* Total Billing by Insurance Provider
+The dataset used in this project consists of **synthetic hospital admission and billing records** designed to simulate operational healthcare data. After cleaning and preprocessing, the dataset contains **50,000 patient records** with multiple variables related to patient demographics, hospital utilization, and billing information.
 
-The dashboard was built using **PivotTables, PivotCharts, and slicers**, allowing users to dynamically filter the data and explore trends across different patient groups.
+### Main Data Structure
 
-### Interactive Filters
+The analysis dataset consists of one primary analytical table derived from healthcare admission records.
 
-The dashboard includes slicers that allow filtering by:
+| Field                   | Description                                  |
+| ----------------------- | -------------------------------------------- |
+| name                    | Patient identifier                           |
+| age                     | Patient age                                  |
+| gender                  | Patient gender                               |
+| blood_type              | Blood type classification                    |
+| medical_condition       | Diagnosed condition                          |
+| admission_type          | Admission type (Emergency, Elective, Urgent) |
+| hospital                | Hospital location                            |
+| doctor                  | Attending physician                          |
+| admission_date          | Date of admission                            |
+| discharge_date          | Date of discharge                            |
+| length_of_stay          | Calculated hospital stay duration            |
+| billing_amount          | Original billing amount                      |
+| adjustment_flag         | Indicates billing charge vs adjustment       |
+| adjusted_billing_amount | Positive billing value used for analysis     |
+| insurance_provider      | Insurance company responsible for billing    |
+| medication              | Medication prescribed                        |
+| test_results            | Diagnostic test outcome                      |
+| room_number             | Assigned hospital room                       |
 
-* Admission Type
-* Medical Condition
-* Insurance Provider
-* Gender
-* Test Results
+### Initial Data Quality Checks
 
-When filters are applied, all dashboard visualizations update simultaneously, enabling users to explore relationships between hospitalization duration, treatment costs, and patient characteristics.
+Several preprocessing and validation steps were performed before analysis:
+
+* Removed **534 exact duplicate records**
+* Removed additional duplicates where records differed only by **age**
+* Verified that **no missing values** existed in the dataset
+* Confirmed that **discharge dates always occurred after admission dates**
+* Created derived variables including:
+
+  * `length_of_stay`
+  * `adjusted_billing_amount`
+  * `adjustment_flag`
+
+These steps ensured the dataset was clean and suitable for exploratory analysis.
 
 ---
 
-## Key Insights
+# Executive Summary
 
-• Longer hospital stays are associated with higher treatment costs.
+### Overview of Findings
 
-• Certain medical conditions tend to require longer hospitalization periods.
+Three key insights emerged from the analysis of hospital admission and billing data:
 
-• Treatment costs vary significantly across medical conditions.
+1. **Longer hospital stays are associated with higher treatment costs**, indicating that hospitalization duration is a major driver of healthcare expenditures.
+2. **Treatment costs vary across medical conditions**, suggesting differences in treatment complexity and resource utilization.
+3. **Admissions and billing distribution appear balanced across categories**, which reflects the synthetic structure of the dataset but demonstrates how hospitals can monitor operational patterns.
 
-• Billing revenue is distributed across multiple insurance providers.
-
----
-
-# Business Recommendations
-
-Based on the findings from the exploratory and SQL analysis, several recommendations can help healthcare organizations improve operational efficiency and cost management.
-
-### Monitor High-Cost Medical Conditions
-
-Hospitals should track medical conditions associated with higher treatment costs or longer hospital stays. Identifying these conditions can help improve treatment planning and resource allocation.
+For healthcare leadership, these findings highlight the importance of monitoring **hospital stay duration, treatment cost drivers, and patient admission patterns** to improve operational efficiency and cost management.
 
 ---
 
-### Optimize Hospital Length of Stay
+# Insights Deep Dive
 
-Since longer hospital stays tend to increase treatment costs, hospitals should explore opportunities to improve care coordination and discharge planning to reduce unnecessary hospitalization duration.
+## Category 1: Admission Distribution and Patient Intake Patterns
 
----
+• **Main insight 1:** Admissions are distributed across emergency, elective, and urgent categories, demonstrating how hospitals classify patient intake based on treatment urgency.
 
-### Improve Financial Monitoring
+• **Main insight 2:** Emergency admissions represent a critical operational area that requires immediate resource allocation and medical attention.
 
-Healthcare organizations should maintain strong oversight of billing adjustments and financial reporting to ensure accurate tracking of treatment costs and reimbursements.
+• **Main insight 3:** Elective admissions typically represent scheduled procedures, allowing hospitals to better plan staff and facility utilization.
 
----
+• **Main insight 4:** Understanding admission patterns helps hospital administrators monitor patient flow and operational demand.
 
-### Leverage Data Analytics for Decision-Making
-
-Hospitals can benefit from implementing data analytics solutions to better understand patient admission patterns, cost drivers, and resource utilization. Data-driven insights can support better operational planning and improved healthcare outcomes.
+![Admission Distribution](visuals/admission_distribution_by_admission_type.png)
 
 ---
 
-This project demonstrates how healthcare data can be analyzed to identify patterns in **hospital utilization, treatment costs, and patient admissions**, providing insights that support more informed healthcare management decisions.
+## Category 2: Hospital Length of Stay Analysis
+
+• **Main insight 1:** Average hospital stay duration varies by medical condition, suggesting differences in treatment intensity and recovery time.
+
+• **Main insight 2:** Some conditions require longer hospitalization due to more complex treatment protocols or extended monitoring.
+
+• **Main insight 3:** Longer hospital stays increase resource utilization, including bed occupancy and staffing requirements.
+
+• **Main insight 4:** Monitoring length of stay helps hospitals identify opportunities to improve operational efficiency and patient throughput.
+
+![Admission Distribution](visuals/average_length_of_stay_by_medical_condition.png)
+
+![Admission Distribution](visuals/length_of_stay_vs_average_treatment_cost.png)
+
+---
+
+## Category 3: Treatment Cost Drivers by Medical Condition
+
+• **Main insight 1:** Average treatment costs differ across medical conditions, reflecting variations in diagnostic testing, medication, and procedures.
+
+• **Main insight 2:** Conditions requiring specialized treatment tend to produce higher billing amounts.
+
+• **Main insight 3:** Treatment cost analysis helps identify conditions contributing most to hospital expenditures.
+
+• **Main insight 4:** Understanding cost drivers supports financial planning and cost management strategies.
+
+![Admission Distribution](visuals/average_treatment_cost_by_medical_condition.png)
+
+---
+
+## Category 4: Insurance Billing and Revenue Distribution
+
+• **Main insight 1:** Billing totals are distributed across multiple insurance providers.
+
+• **Main insight 2:** Insurance reimbursements represent a significant source of hospital revenue.
+
+• **Main insight 3:** Monitoring payer mix helps healthcare organizations understand financial risk and revenue concentration.
+
+• **Main insight 4:** Billing analysis can support strategic planning and negotiations with insurance providers.
+
+![Admission Distribution](visuals/total_billing_by_insurance_provider.png)
+
+---
+
+# Recommendations
+
+Based on the analysis and insights identified above, healthcare management teams should consider the following actions:
+
+• **Monitor high-cost medical conditions.**
+Hospitals should track conditions associated with higher treatment costs and longer hospital stays to better allocate resources and manage operational expenses.
+
+• **Optimize hospital length of stay.**
+Improving discharge planning and care coordination may help reduce unnecessary hospitalization duration while maintaining quality patient care.
+
+• **Improve financial monitoring.**
+Regular review of billing adjustments and insurance reimbursements can help improve revenue tracking and financial transparency.
+
+• **Enhance resource planning for high-demand admissions.**
+Analyzing admission patterns helps hospitals prepare staffing and bed capacity for fluctuating patient demand.
+
+• **Invest in healthcare analytics capabilities.**
+Developing stronger data analytics capabilities can support better decision-making related to hospital operations, cost management, and patient care.
+
+---
+
+This project demonstrates how **healthcare data analytics can be used to evaluate hospital utilization, treatment costs, and patient admission patterns**, while illustrating how analytical insights can support operational and financial decision-making in healthcare organizations.
